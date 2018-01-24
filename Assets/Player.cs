@@ -22,7 +22,7 @@ public class Player : MonoBehaviour {
     /*ここまで*/
 
     //sample
-    void sample(int a, double b, bool c,)
+    void Sample(int a, double b, bool c)
     {
         //a:〇〇の状態を示す変数
         //b:✕✕の座標
