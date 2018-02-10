@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using System;
 
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     public GameObject[] hand = new GameObject[5];
     public int coin = 30;
@@ -18,10 +19,8 @@ public class Player : MonoBehaviour {
 
 
     /* 変数宣言が必要な場合は適宜ここから*/
-	private Text ger;
-	GameObject hoge;
-	GameObject hoge2;
-	GameObject hoge3;
+    GameObject p_obj;
+
     /*ここまで*/
 
     //sample
@@ -36,48 +35,50 @@ public class Player : MonoBehaviour {
     }
 
     // Use this for initialization 一応残す
-	void Start () {
-		hoge2 = GameObject.Find("GameObject");
-		hoge2.GetComponent<Player>().Set_Bet();
-	}
-	
-	// Update is called once per frame 一応残す
-	void Update () {
+    void Start()
+    {
+        p_obj = GameObject.Find("Player");
+        //Set_Betはコルーチンで呼び出す
+        StartCoroutine(p_obj.GetComponent<Player>().Set_Bet());
+    }
 
-	//トリガーがわからないので, 便宜的にスペースキーが押されたタイミングでSet_Bet呼び出し.
-		//if(Input.GetKey(KeyCode.Space)){
-		//	hoge2 = GameObject.Find("GameObject");
-		//	hoge2.GetComponent<Player>().Set_Bet();
-		//}
+    // Update is called once per frame 一応残す
+    void Update()
+    {
 
-	}
+    }
 
     void Set_hand(int[] type) //デッキからカードを引く時用メゾット 大浦
     {
 
     }
 
-    void Set_Bet() //ベット用メゾット 宇津木
+    IEnumerator Set_Bet() //ベット用メゾット 宇津木
     {
-	//便宜的に, update()から呼び出し.
+        //便宜的に, update()から呼び出し.
 
-	hoge = GameObject.Find("GameObject/bet/Canvas/InputField/Text");
-	hoge3 = GameObject.Find("GameObject/bet/Canvas/InputField");
+        GameObject textbox;
+        GameObject field;
+        Text ger;
 
-	//ベット用GUI表示.
-	hoge3.GetComponent<Image>().enabled = true;
-	hoge.GetComponent<Text>().enabled = true;
-	
-	while(Input.GetKey(KeyCode.Space) != true){}
-	//int betに入力値をセット.
-	ger = hoge.GetComponent<Text>();
-	bet = Convert.ToInt32(ger.text);
-	//Debug.Log(bet);
-	
-	//GUI消失.
-	hoge3.GetComponent<Image>().enabled = false;
-	hoge.GetComponent<Text>().enabled = false;
-	
+        textbox = GameObject.Find("Player/bet/Canvas/InputField/Text");
+        field = GameObject.Find("Player/bet/Canvas/InputField");
+
+        //ベット用GUI表示.
+        field.GetComponent<Image>().enabled = true;
+        textbox.GetComponent<Text>().enabled = true;
+
+        //入力待ち（コルーチン）
+        while (!Input.GetKey(KeyCode.Space)) yield return 0;
+
+        //int betに入力値をセット.
+        ger = textbox.GetComponent<Text>();
+        bet = Convert.ToInt32(ger.text);
+
+        //GUI消失.
+        field.GetComponent<Image>().enabled = false;
+        textbox.GetComponent<Text>().enabled = false;
+
 
     }
 
