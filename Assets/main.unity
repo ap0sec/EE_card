@@ -190,6 +190,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb5f2908b6339284cafc0aefe4e5f452, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &171071625 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1460804667352464, guid: cb5f2908b6339284cafc0aefe4e5f452,
+    type: 2}
+  m_PrefabInternal: {fileID: 171071624}
 --- !u!1 &200674704 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 30853de2c99f84242a4a813d826558f7, type: 2}
@@ -423,8 +428,9 @@ GameObject:
   - component: {fileID: 789261685}
   - component: {fileID: 789261684}
   - component: {fileID: 789261683}
+  - component: {fileID: 789261688}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Player
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -500,6 +506,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 44.050003, y: 90.00001, z: 0}
+--- !u!114 &789261688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 789261682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca6d53344fa0e04fbc6b7a32e7f0675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  coin: 30
+  bet: 0
+  distance: 1000
+  typeDate: 0
+  targetCard: {fileID: 171071625}
 --- !u!1001 &933111011
 Prefab:
   m_ObjectHideFlags: 0
@@ -912,6 +940,10 @@ MonoBehaviour:
   - {fileID: 22366051}
   - {fileID: 1615744910}
   coin: 30
+  bet: 0
+  distance: 100
+  typeDate: 0
+  targetCard: {fileID: 0}
 --- !u!4 &1676082535
 Transform:
   m_ObjectHideFlags: 0
