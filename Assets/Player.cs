@@ -61,8 +61,8 @@ public class Player : MonoBehaviour
         GameObject field;
         Text ger;
 
-        textbox = GameObject.Find("Player/bet/Canvas/InputField/Text");
-        field = GameObject.Find("Player/bet/Canvas/InputField");
+        textbox = GameObject.Find("Player/Canvas/InputField/Text");
+        field = GameObject.Find("Player/Canvas/InputField");
 
         //ベット用GUI表示.
         field.GetComponent<Image>().enabled = true;
