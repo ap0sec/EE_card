@@ -17,8 +17,6 @@ public class Player : MonoBehaviour {
     /* 変数宣言が必要な場合は適宜ここから*/
 
 
-
-
     /*ここまで*/
 
     //sample
