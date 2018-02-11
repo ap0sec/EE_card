@@ -16,14 +16,10 @@ public class Player : MonoBehaviour
 
 
 	/* 変数宣言が必要な場合は適宜ここから*/
-
+	GameObject targetCard;
 	public float distance = 100f;
 	public int typeDate = 0;
-	public GameObject targetCard;
-	GameObject CardObject;
-	Renderer rend;
-	Card script;
-	int looptriger = 0;
+	int looptriger;
 
 
 	/*ここまで*/
@@ -42,7 +38,8 @@ public class Player : MonoBehaviour
 	// Use this for initialization 一応残す
 	void Start ()
 	{
-		
+		targetCard = GameObject.FindGameObjectWithTag("target");
+		StartCoroutine ("Choice_card");
 	}
 	
 	// Update is called once per frame 一応残す
@@ -72,19 +69,21 @@ public class Player : MonoBehaviour
 
 				if (Physics.Raycast (ray, out hit, distance)) {
 					//所得したCardからType変数を所得
-					CardObject = hit.collider.gameObject;
-					script = CardObject.GetComponent<Card> ();
+					GameObject CardObject = hit.collider.gameObject;
+					Card script = CardObject.GetComponent<Card> ();
 					typeDate = script.type;
 					//盤上のカードにデータコピー
-					targetCard.GetComponent<Card> ().type = typeDate;
+					//Debug.Log(targetCard);
+					//targetCard.GetComponent<Card> ().type = typeDate;
+					Card targetScript = targetCard.GetComponent<Card> ();
+					targetScript.type = typeDate;
 					//選択した手札を非表示化
-					rend = CardObject.GetComponent<Renderer> ();
+					Renderer rend = CardObject.GetComponent<Renderer> ();
 					rend.enabled = false;
 					looptriger = 1;
 				}
 			}
 			yield return null;
 		}
-		yield break;
 	}
 }
