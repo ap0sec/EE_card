@@ -49,7 +49,19 @@ public class Player : MonoBehaviour
     // Update is called once per frame 一応残す
     void Update()
     {
+		int i = 0;
 
+		var childTransform = GameObject.Find ("hand").transform;
+
+		foreach(Transform child in childTransform.transform){
+
+			var gchild = child.Find("Card_F").transform;
+
+			var card = gchild.GetComponentInChildren<Card> ();
+			card.type = type[i];
+			Debug.Log("card: " + card);
+			i++;
+		}			
     }
 
     void Set_hand(int[] type) //デッキからカードを引く時用メゾット 大浦
