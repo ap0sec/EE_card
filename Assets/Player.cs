@@ -16,10 +16,6 @@ public class Player : MonoBehaviour {
 
     /* 変数宣言が必要な場合は適宜ここから*/
 
-	private GameObject _child;
-	private GameObject _gchild;
-
-
 
     /*ここまで*/
 
@@ -47,21 +43,12 @@ public class Player : MonoBehaviour {
     void Set_hand(int[] type) //デッキからカードを引く時用メゾット 大浦
     {
 		int i = 0;
-		Debug.Log ("name:" + gameObject.name);
-		if (GameObject.Find ("hand").transform.IsChildOf (transform)) {
-			Debug.Log ("true");
-		} else {
-			Debug.Log ("false");
-		}
-		_child = transform.Find("hand").gameObject;
+
 		var childTransform = GameObject.Find ("hand").transform;
 
-
 		foreach(Transform child in childTransform.transform){
-			Debug.Log ("name:" + child.name);
 
 			var gchild = child.Find("Card_F").transform;
-			Debug.Log ("name:" + gchild.name);
 
 			var card = gchild.GetComponentInChildren<Card> ();
 			card.type = type[i];
