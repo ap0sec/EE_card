@@ -49,6 +49,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame 一応残す
     void Update()
     {
+		
+    }
+
+    void Set_hand(int[] type) //デッキからカードを引く時用メゾット 大浦
+    {
 		int i = 0;
 
 		var childTransform = GameObject.Find ("hand").transform;
@@ -61,13 +66,9 @@ public class Player : MonoBehaviour
 			card.type = type[i];
 			Debug.Log("card: " + card);
 			i++;
-		}			
+		}
     }
 
-    void Set_hand(int[] type) //デッキからカードを引く時用メゾット 大浦
-    {
-
-    }
     IEnumerator Set_Bet() //ベット用メゾット 宇津木
     {
         //便宜的に, update()から呼び出し.
@@ -103,24 +104,25 @@ public class Player : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit = new RaycastHit();
 
-                if (Physics.Raycast(ray, out hit, distance))
-                {
-                    //所得したCardからType変数を所得
-                    GameObject CardObject = hit.collider.gameObject;
-                    Card script = CardObject.GetComponent<Card>();
-                    typeDate = script.type;
-                    //盤上のカードにデータコピー
-                    //Debug.Log(targetCard);
-                    //targetCard.GetComponent<Card> ().type = typeDate;
-                    Card targetScript = targetCard.GetComponent<Card>();
-                    targetScript.type = typeDate;
-                    //選択した手札を非表示化
-                    Renderer t_rend = CardObject.GetComponent<Renderer>();
-                    Renderer f_rend = targetCard.GetComponent<Renderer>();
-                    t_rend.enabled = false;
-                    f_rend.enabled = true;
-                    looptriger = 1;
-                }
+				if (Physics.Raycast (ray, out hit, distance)) {
+					if (hit.collider.gameObject.tag == "hands") {
+						//所得したCardからType変数を所得
+						GameObject CardObject = hit.collider.gameObject;
+						Card script = CardObject.GetComponent<Card> ();
+						typeDate = script.type;
+						//盤上のカードにデータコピー
+						//Debug.Log(targetCard);
+						//targetCard.GetComponent<Card> ().type = typeDate;
+						Card targetScript = targetCard.GetComponent<Card> ();
+						targetScript.type = typeDate;
+						//選択した手札を非表示化
+						Renderer t_rend = CardObject.GetComponent<Renderer> ();
+						Renderer f_rend = targetCard.GetComponent<Renderer> ();
+						t_rend.enabled = false;
+						f_rend.enabled = true;
+						looptriger = 1;
+					}
+				}
             }
             yield return null;
         }
