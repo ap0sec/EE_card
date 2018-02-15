@@ -43,10 +43,10 @@ public class Player : MonoBehaviour
     {
 		int i = 0;
 
-		var childTransform = GameObject.Find ("hand").transform;
+		var childTransform = GameObject.Find ("p_hand").transform;
 
-		foreach(Transform child in childTransform.transform){
-
+		foreach(Transform child in childTransform.transform)
+        {
 			var gchild = child.Find("Card_F").transform;
 
 			var card = gchild.GetComponentInChildren<Card> ();

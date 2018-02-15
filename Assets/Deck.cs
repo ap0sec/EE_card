@@ -1,16 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 public class Deck : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    int[] data;
+    int counter;
+    GameObject p_obj;
+    GameObject e_obj;
+
+    void Start()
+    {
+        data = new int[31];
+        counter = 0;
+        //p_obj = ;
+    }
+
+    void Init()
+    {
+        for(int i = 0; i < data.Length; i++)
+        {
+            if (i < 5) data[i] = 0;
+            else if (i < 25) data[i] = 1;
+            else if (i < 30) data[i] = 2;
+            else data[i] = 3;
+        }
+        data = data.OrderBy(i => Guid.NewGuid()).ToArray();
+    }
+
+    void Giveout()
+    {
+        
+    }
 }
