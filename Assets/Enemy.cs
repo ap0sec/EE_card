@@ -60,8 +60,24 @@ public class Enemy : MonoBehaviour
         bet = p_bet;
     }
 
-    public void Choice_card() //カード選択用メゾット
+    public IEnumerable Choice_card() //カード選択用メゾット
     {
-
+        GameObject[] e_hand = GameObject.FindGameObjectsWithTag("e_hand");
+        GameObject e_field = GameObject.FindGameObjectWithTag("e_field");
+        for(int i = 0; i < 5; i++)
+        {
+            var childTransform = e_hand[i].transform;
+            foreach(Transform child in childTransform.transform)
+            {
+                if(child.name == "Card_F")
+                {
+                    e_field.GetComponent<Card>().type = child.GetComponent<Card>().type;
+                }else if(child.name == "Card_B")
+                {
+                    child.GetComponent<Renderer>().enabled = false;
+                }
+            }
+            yield return i;
+        }
     }
 }
