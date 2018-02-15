@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
 		
     }
 
-    void Set_hand(int[] type) //デッキからカードを引く時用メゾット
+    public void Set_hand(int[] type) //デッキからカードを引く時用メゾット
     {
 		int i = 0;
 
@@ -51,12 +51,12 @@ public class Player : MonoBehaviour
 
 			var card = gchild.GetComponentInChildren<Card> ();
 			card.type = type[i];
-			Debug.Log("card: " + card);
+            card.GetComponent<Renderer>().enabled = true;
 			i++;
 		}
     }
 
-    IEnumerator Set_Bet() //ベット用メゾット
+    public IEnumerator Set_Bet() //ベット用メゾット
     {
         GameObject textbox;
         Text ger;
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
 
     }
 
-    IEnumerator Choice_card() //カード選択用メゾット
+    public IEnumerator Choice_card() //カード選択用メゾット
     {
         looptriger = 0;
         while (looptriger == 0)

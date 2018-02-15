@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void Set_hand(int[] type) //デッキからカードを引く時用メゾット
+    public void Set_hand(int[] type) //デッキからカードを引く時用メゾット
     {
         int i = 0;
 
@@ -48,20 +48,19 @@ public class Enemy : MonoBehaviour
         foreach (Transform child in childTransform.transform)
         {
             var gchild = child.Find("Card_F").transform;
-
             var card = gchild.GetComponentInChildren<Card>();
             card.type = type[i];
-            Debug.Log("card: " + card);
+            child.Find("Card_B").GetComponent<Renderer>().enabled = true;
             i++;
         }
     }
 
-    void Set_Bet() //ベット用メゾット
+    public void Set_Bet(int p_bet) //ベット用メゾット
     {
-
+        bet = p_bet;
     }
 
-    void Choice_card() //カード選択用メゾット
+    public void Choice_card() //カード選択用メゾット
     {
 
     }

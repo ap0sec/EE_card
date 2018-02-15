@@ -15,10 +15,12 @@ public class Deck : MonoBehaviour {
     {
         data = new int[31];
         counter = 0;
+        p_obj = GameObject.Find("Player");
+        e_obj = GameObject.Find("Enemy");
         //p_obj = ;
     }
 
-    void Init()
+    public void Init()
     {
         for(int i = 0; i < data.Length; i++)
         {
@@ -30,8 +32,20 @@ public class Deck : MonoBehaviour {
         data = data.OrderBy(i => Guid.NewGuid()).ToArray();
     }
 
-    void Giveout()
+    public void Giveout()
     {
-        
+        int[] give = new int[5];
+        for(int i = 0; i < 5; i++)
+        {
+            give[i] = data[counter];
+            counter++;
+        }
+        p_obj.GetComponent<Player>().Set_hand(give);
+        for (int i = 0; i < 5; i++)
+        {
+            give[i] = data[counter];
+            counter++;
+        }
+        e_obj.GetComponent<Enemy>().Set_hand(give);
     }
 }
