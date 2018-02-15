@@ -284,6 +284,7 @@
   <ItemGroup>
     <Compile Include="Assets\Card.cs" />
     <Compile Include="Assets\Deck.cs" />
+    <Compile Include="Assets\main.cs" />
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\Scripts\ActiveStateToggler.cs" />
     <Compile Include="Assets\Scripts\ApplicationManager.cs" />
