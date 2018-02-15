@@ -9,7 +9,7 @@ public class Card : MonoBehaviour {
     public Material retination;
     public Material jobee;
 
-    int type = 0; //0:teacher 1:student 2:retination 3:jobee
+    public int type = 0; //0:teacher 1:student 2:retination 3:jobee
 	
 	// Update is called once per frame
 	void Update () {
