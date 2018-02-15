@@ -6,6 +6,8 @@ TagManager:
   tags:
   - target
   - hands
+  - e_hand
+  - e_field
   layers:
   - Default
   - TransparentFX
